@@ -117,7 +117,6 @@ table {
     display: grid;
     grid-template-columns: 40% 50% ;
     grid-template-rows: 50%;
-    /* padding:  0 50px 0 100px; */
   }
 
  
@@ -133,4 +132,45 @@ table {
   grid-template-columns: 50% 50%;
   grid-template-rows: 50%;
   justify-content: center;
+  padding: 20px 0 20px 20%;
+}
+
+
+@media only screen and (min-width: 900px) {
+
+  ul{
+    transform: translateY(14px);
+  }
+
+  ul li{
+    list-style-type: none;
+    font-size: 20px;
+    line-height: 2rem;
+  }
+
+  .oldestUserContainer{
+    grid-template-columns: 50% 40% ;
+  }
+
+  .oldUserImg{
+    width: 65%;
+  }
+  
+  .a h1{
+    font-size: 28px;
+  }
+
+  .b h2{
+    margin-top:20%;
+    font-size: 32px;
+  }
+
+  .maleImg{
+    width: 35%;
+  }
+
+  .femaleImg{
+    width: 35%;
+  }
+
 }
