@@ -135,6 +135,16 @@ table {
   padding: 20px 0 20px 20%;
 }
 
+.maleImg, .femaleImg{
+  width: 90px;
+}
+
+
+footer{
+  height: 30vh;
+  background-color: #256b71;
+}
+
 
 @media only screen and (min-width: 900px) {
 
