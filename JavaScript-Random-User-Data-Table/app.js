@@ -36,8 +36,6 @@ const inputContainer = document.getElementById("inputContainer");
 
 // creating input
 const searchInput = document.createElement("input");
-const btnSearch = document.createElement("button");
-btnSearch.textContent = "Search";
 
 const NumOfPeople = document.createElement("div");
 NumOfPeople.textContent = `Number of people: ${numPeople}`;
@@ -74,9 +72,8 @@ btnDecrease.addEventListener("click", function () {
 });
 
 inputContainer.appendChild(searchInput);
-inputContainer.appendChild(btnSearch);
-inputContainer.appendChild(NumOfPeople);
 inputContainer.appendChild(btnDecrease);
+inputContainer.appendChild(NumOfPeople);
 inputContainer.appendChild(btnIncrease);
 
 // =============================================================
@@ -114,18 +111,32 @@ function capitalizeFirstLetter(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-// search btn eventListener 
-btnSearch.addEventListener("click", function () {
+// checking if there is exist inputted value in the table
+searchInput.addEventListener("input", function() {
+  const searchTerm = searchInput.value.toLowerCase(); 
+
   const rows = table.getElementsByTagName("tr");
-  for (const row of rows) {
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    let showRow = false; 
     const cells = row.getElementsByTagName("td");
     for (const cell of cells) {
-      if (cell.textContent.includes(searchInput.value)) {
-        row.classList.add("newClass");
+      
+      if (cell.textContent.toLowerCase().includes(searchTerm)) {
+        showRow = true;
         break;
-      } else {
-        row.style.display = "none";
       }
+    }
+    if (showRow) {
+      row.style.display = "table-row";
+     } else {
+      row.style.display = "none";
     }
   }
 });
+
+
+
+
+
+

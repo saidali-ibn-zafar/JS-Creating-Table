@@ -53,7 +53,7 @@ body{
   }
 
 #inputContainer input{
-  width: 55%;
+  width: 65%;
   height: 5vh;
   outline: none;
   font-size: 24px;
@@ -71,7 +71,7 @@ body{
   background: #f2f2f2
 }
 
-#inputContainer button{
+/* #inputContainer button{
   width: 10%;
   border-radius: 0px 4px 15px 0px;
   background: #327a81;
@@ -83,7 +83,7 @@ body{
 #inputContainer button:hover{
   background: #3f969e;
   cursor: pointer;
-}
+} */
 
 #inputContainer div{
   font-size: 20px;
