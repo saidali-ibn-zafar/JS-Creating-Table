@@ -1,5 +1,9 @@
-let numPeople = 10;
-
+let numPeople = localStorage.getItem("numPeople");
+if (numPeople === null) {
+  numPeople = 1;
+} else {
+  numPeople = parseInt(numPeople);
+}
 // array as global vars
 const columns = [
   { name: "id", generator: () => faker.random.uuid() },
@@ -41,12 +45,21 @@ const NumOfPeople = document.createElement("div");
 NumOfPeople.textContent = `Number of people: ${numPeople}`;
 
 const btnDecrease = document.createElement("span");
-btnDecrease.textContent = "-";
+const imgElementDecrease = document.createElement("img");
+imgElementDecrease.src = "./images/up-arrow.png";
+imgElementDecrease.style.width = "20px";
+imgElementDecrease.style.rotate = "180deg";
+btnDecrease.appendChild(imgElementDecrease);
+
 const btnIncrease = document.createElement("span");
-btnIncrease.textContent = "+";
+const imgElementIncrease = document.createElement("img");
+imgElementIncrease.src = "./images/up-arrow.png";
+imgElementIncrease.style.width = "20px";
+btnIncrease.appendChild(imgElementIncrease);
 
 btnIncrease.addEventListener("click", function () {
   numPeople++;
+  localStorage.setItem("numPeople", numPeople);
   NumOfPeople.textContent = `Number of people: ${numPeople}`;
   const newData = generateData(1);
   const tableRow = document.createElement("tr");
@@ -61,6 +74,7 @@ btnIncrease.addEventListener("click", function () {
 btnDecrease.addEventListener("click", function () {
   if (numPeople > 1) {
     numPeople--;
+    localStorage.setItem("numPeople", numPeople);
     NumOfPeople.textContent = `Number of people: ${numPeople}`;
     const tableRows = table.getElementsByTagName("tr");
     if (tableRows.length > 1) {
@@ -112,16 +126,16 @@ function capitalizeFirstLetter(word) {
 }
 
 // checking if there is exist inputted value in the table
-searchInput.addEventListener("input", function() {
-  const searchTerm = searchInput.value.toLowerCase(); 
+searchInput.addEventListener("input", function () {
+  const searchTerm = searchInput.value.toLowerCase();
 
   const rows = table.getElementsByTagName("tr");
+  // we do not want to check the first row (header) so we are starting form 1 to ...length - 1;
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
-    let showRow = false; 
+    let showRow = false;
     const cells = row.getElementsByTagName("td");
     for (const cell of cells) {
-      
       if (cell.textContent.toLowerCase().includes(searchTerm)) {
         showRow = true;
         break;
@@ -129,14 +143,77 @@ searchInput.addEventListener("input", function() {
     }
     if (showRow) {
       row.style.display = "table-row";
-     } else {
+    } else {
       row.style.display = "none";
     }
   }
 });
 
+// go top button appears when Y = 200 ...
+const topLink = document.querySelector(".top-link");
+window.addEventListener("scroll", function () {
+  // console.log(window.pageYOffset);
+  const scrollHeight = window.pageYOffset;
+
+  if (scrollHeight > 150) {
+    topLink.classList.add("show-link");
+  } else {
+    topLink.classList.remove("show-link");
+  }
+});
+
+// going to top
+topLink.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+  });
+});
 
 
 
+// ================================================================
+// FOOTER 
 
+// const links = [
+//   "https://github.com/saidali-ibn-zafar",
+//   "https://t.me/zikirillayev",
+//   "https://instagram.com/saidali_ibn_zafar",
+// ];
+// const linksText = ["GitHub", "Telegram", "Instagram"];
+
+// const footer = document.createElement("footer");
+// footer.classList.add("footerContainer");
+
+
+// for (let i = 0; i < 3; i++) {
+//   const footerDiv = document.createElement("div");
+//   footerDiv.classList.add("footerDiv");
+//   footer.appendChild(footerDiv);
+
+//   if (i === 0) {
+//     for (let j = 0; j < 3; j++) {
+//       footerDiv.classList.add("footerDiv1");
+//       const link = document.createElement("a");
+//       link.href = links[j];
+//       link.textContent = linksText[j];
+//       footerDiv.appendChild(link);
+//     }
+//   }
+
+//   if (i === 1) {
+//     // THINKING WHAT I CAN ADD
+//   }
+
+//   if (i === 2) {
+//     // THINKING WHAT I CAN ADD
+//   }
+// }
+
+// body.appendChild(footer);
+
+// ================================================================
+// END OF FOOTER 
+
+// storing to local storage
+localStorage.setItem("numPeople", numPeople);
 

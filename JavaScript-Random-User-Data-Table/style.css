@@ -1,5 +1,7 @@
+/* IMPORTING FONT FAMILY CALLED POPPINS */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
+/* BODY STYLES */
 body{
   margin: 0;
   padding: 0;
@@ -9,17 +11,24 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 10vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* TABLE STYLES  */
 #tableContainer{
   width: 94%;
   border-collapse: collapse;
   transition: all .4s ease-in-out;
   margin-top: 3vh;
+  margin-bottom: 6vh;
 }
 
 #tableContainer:hover{
-  transform: scale(1.001);
+  transform: scale(1.005);
 }
 
 #tableContainer th {
@@ -41,7 +50,7 @@ body{
   padding: 6px 8px;
   text-align: center;
 }
-
+/* END OF TABLE STYLES  */
 
 
 /* start of input container  */
@@ -57,7 +66,7 @@ body{
   height: 5vh;
   outline: none;
   font-size: 24px;
-  border-radius: 15px 0px 0px 4px;
+  border-radius: 15px 0px 15px 0px;
   border: 2px solid #327a81;
   transition: all .4s ease-in-out;
   
@@ -71,6 +80,7 @@ body{
   background: #f2f2f2
 }
 
+/* IF WE FIND DATA WITH CLICKING BTN, THEN WE CAN UNCOMMENT BELOW:   */
 /* #inputContainer button{
   width: 10%;
   border-radius: 0px 4px 15px 0px;
@@ -85,40 +95,136 @@ body{
   cursor: pointer;
 } */
 
+/* ================================================================ */
+
+
+/* DIV STYLES TO DISPLAY NUM  OF PEOPLE  */
 #inputContainer div{
   font-size: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: center;;
   margin-left: 2%;
   border: 2px solid #327a81;
-  padding: 0 2% 0 2%;
+  padding: 0 3% 0 3%;
   border-radius: 5px;
 }
+/* END OF DIV STYLES TO DISPLAY NUM  OF PEOPLE  */
 
+
+/* INCREASE AND DECREASE STYLES */
 #inputContainer span{
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 2%;
   background: #327a81;
-  padding: 0 2% 0 2%;
+  padding: 0 1% 0 1%;
   color: #fff;
   border-radius: 5px;
-  border: 1px solid #000;
   user-select: none;
-
+  transition: all .4s ease-in-out;
 }
+
 
 #inputContainer span:hover{
   background-color: #3f969e;
   cursor: pointer;
 }
 
-
-
-.newClass{
-  display: table-row;
+#inputContainer span:active{
+  background-color: #327a81;
 }
+/* END OF INCREASE AND DECREASE STYLES */
+
 
 /* end of input container  */
+
+
+/* GOING TO TOP BTN STYLES  */
+a {
+  text-decoration: none;
+}
+
+.top-link {
+  font-size: 1.25rem;
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  background: #327a81;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.5rem;
+  color: #fff;
+  animation: bounce 2s ease-in-out infinite;
+  visibility: hidden;
+  z-index: -100;
+  border: 1px solid #fff;
+}
+
+.top-link:hover{
+  background-color: #3f969e;
+}
+.show-link {
+  visibility: visible;
+  z-index: 100;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* END OF GOING TO TOP BTN STYLES  */
+
+
+
+/* FOOTER =========================== */
+/* footer container  */
+/* .footerContainer {
+  width: 100%;
+  background-color: #327a81;
+  height: 25vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  
+} 
+
+.footerDiv1{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  line-height: 2rem;
+  color: #fff;
+  border: 1px dashed #fff;
+  font-size: 18px;
+  padding: 20px 100px 20px 40px;
+  border-radius: 4px;
+  transition: all .4s ease-in-out;
+}
+
+.footerDiv1:hover{
+  transform: scale(1.05);
+  background: #3f969e;
+}
+
+a{
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover{
+  color: lightblue;
+} */
+
+/* END OF FOOTER =========================== */
